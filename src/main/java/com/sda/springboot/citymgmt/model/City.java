@@ -14,8 +14,12 @@ public class City {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
-    @Column(name = "countrycode")  //used when the name on the database is case sensitive
-    private String countryCode;
+//    @Column(name = "countrycode")  //used when the name on the database is case sensitive
+//    private String countryCode;
     private String district;
     private Long population;
+
+    @ManyToOne
+    @JoinColumn(name = "countryCode")
+    private Country country;
 }
