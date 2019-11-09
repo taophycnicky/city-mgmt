@@ -11,32 +11,35 @@ public class CityService {
     @Autowired
     private CityRepository cityRepository;
 
-    public List<City> getCities(){
+    public List<City> getCities() {
         return cityRepository.findAll();
     }
 
-    public List<City>getCitiesByName(String name){
+    public List<City> getCitiesByName(String name) {
         return cityRepository.findAllByName(name);
     }
 
-    public City getCityById(Long id){
+    public City getCityById(Long id) {
         return cityRepository.findById(id).orElse(null);
     }
-    public City saveCity(City city){
+
+    public City saveCity(City city) {
         return cityRepository.save(city);
     }
-    public List<City> getCitiesByCountryCode(String countryCode){
+
+    public List<City> getCitiesByCountryCode(String countryCode) {
         return cityRepository.findAllByCountryCode(countryCode);
     }
 
-    public List<City> getCitiesByPopulationGreaterThan(Long population){
+    public List<City> getCitiesByPopulationGreaterThan(Long population) {
         return cityRepository.findAllByPopulationIsGreaterThanEqual(population);
     }
-    public List<City>getCitiesByCountryCodeAndCityName(String countryCode, String cityName){
-        return cityRepository.findAllByCountryCodeAndName2( countryCode,  cityName);
+
+    public List<City> getCitiesByCountryCodeAndCityName(String countryCode, String cityName) {
+        return cityRepository.findAllByCountryCodeAndName2(countryCode, cityName);
     }
 
-    public List<City> getCitiesInDistrictByPopulationGreaterThan(String district, String cityName){
+    public List<City> getCitiesInDistrictByPopulationGreaterThan(String district, String cityName) {
         return cityRepository.findAllByDistrictAndPopulationGreaterThan(district, cityName);
     }
 }
